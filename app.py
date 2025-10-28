@@ -204,6 +204,26 @@ st.markdown("""
         color: #764ba2;
         text-decoration: underline;
     }
+    
+    /* MOBILE RESPONSIVE */
+    @media (max-width: 768px) {
+        .block-container {
+            padding: 1rem !important;
+        }
+        
+        h1 {
+            font-size: 2rem !important;
+        }
+        
+        .stButton>button {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        [data-testid="stMetricValue"] {
+            font-size: 1.5rem !important;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
