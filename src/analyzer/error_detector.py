@@ -37,22 +37,18 @@ class ErrorDetector:
             },
         ]
     
-    def detect_all_issues(self, code: str) -> List[Dict]:
-        """Detect all types of issues in code"""
-        issues = []
-        
-        syntax_issues = self.check_syntax(code)
-        issues.extend(syntax_issues)
-        
-        pattern_issues = self.check_patterns(code)
-        issues.extend(pattern_issues)
-        
-        common_issues = self.check_common_mistakes(code)
-        issues.extend(common_issues)
-        
-        issues.sort(key=lambda x: x.get('line', 0))
-        
-        return issues
+  def detect_all_issues(self, code: str) -> List[Dict]:
+    """Detect ONLY actual syntax errors (no false positives)"""
+    issues = []
+    
+    # ONLY check syntax errors - these are always accurate
+    syntax_issues = self.check_syntax(code)
+    issues.extend(syntax_issues)
+    
+    # Sort by line number
+    issues.sort(key=lambda x: x.get('line', 0))
+    
+    return issues
     
     def check_syntax(self, code: str) -> List[Dict]:
         """Check for syntax errors"""
